@@ -1,7 +1,6 @@
 // Express code.
-let express = require('express');
-let app = express();
-const taskmaster = require ('./routes/router');
+const express = require('express');
+const app = express();
 // Tells express where our static content is located.
 app.use(express.static('server/public'));
 // Setup body parser to handle POST body
@@ -12,7 +11,8 @@ app.use(bodyParser.json());
 // but don't choose 5432 which is the default for the database.
 const port = 5000;
 // send taskmaster
-app.use('/taskmaster',taskmaster);
+const taskRouter = require('./routes/router');
+app.use('/task',taskRouter);
 // Start our server.
 app.listen(port, function() {
     console.log(`Server listening on port ${port}`);
