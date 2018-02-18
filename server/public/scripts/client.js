@@ -1,1 +1,6 @@
-// Empty js file. Please fill in as needed for your project.
+console.log('client.js sourced');
+
+$(onReady);
+function onReady(){
+  console.log('Dom Ready');
+  getTaskMaster();

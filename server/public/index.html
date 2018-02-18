@@ -1,15 +1,38 @@
 <!DOCTYPE html>
-<!-- change sources to approriate files and folders in server/public as
-needed. -->
 <html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/styles.css">
     <script src="vendors/jquery.js" charset="utf-8"></script>
     <script src="scripts/client.js" charset="utf-8"></script>
-    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>To Do App</title>
   </head>
   <body>
+    <section class="taskMaster">
+    <div id="addTask">
+      <h2>Add Task</h2>
+      <input type="text" id="taskIn" value="" placeholder="Task">
+      <input type="text" id="notesIn" value="" placeholder="Notes">
+      <input type="date" id="dueDatein" value="" placeholder="Due Date">
+      <select id="statusIn" placeholder="Status">
+        <option>Uncomplete</option>
+        <option>Complete</option>
+        </select>
+      <button type="button" id="addButton">Add Task</button>
+    </div>
+    <table class="table">
+        <thead id="head">
+            <tr>
+                <th scope="row">Task</th>
+                <th scope="row">Notes</th>
+                <th scope="row">Due Date</th>
+                <th scope="row">Status</th>
+            </tr>
+        </thead>
+        <tbody id="listTasks"></tbody>
+     </table>
   </body>
 </html>

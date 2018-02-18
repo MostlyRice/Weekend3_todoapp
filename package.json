@@ -16,9 +16,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Feora1343/jquery_node_server_structure/issues"
+    "url": "https://github.com/Zygy93/Weekend3_todoapp"
   },
-  "homepage": "https://github.com/Feora1343/jquery_node_server_structure#readme",
+  "homepage": "https://github.com/Zygy93/Weekend3_todoapp#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
