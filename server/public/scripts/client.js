@@ -73,8 +73,9 @@ function viewTasks(tasks){
       <td><button class="completeButton" data-id=${task.id}>COMPLETED</button></td>
       <td><button class="deleteButton" data-id=${task.id}>Delete</button> </td></tr>`)
       else {
-        $('#listTasks').append(`<tr class="taskComplete"><td> ${task.task}</td><td> ${task.notes}</td>
-          <td class="taskComplete"> ${task.duedate.substring(0, 10)}</td> <td> ${task.status} </td>
+        $('#listTasks').append(`<tr class="taskComplete" style="text-decoration: line-through">
+        <td> ${task.task}</td><td> ${task.notes}</td>
+          <td> ${task.duedate.substring(0, 10)}</td> <td> ${task.status} </td>
           <td><button class="deleteButton" data-id=${task.id}>Delete</button> </td></tr>`)
         }
       }
