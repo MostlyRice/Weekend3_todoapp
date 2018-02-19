@@ -35,4 +35,32 @@ pool.query(sqlText,[newTask.task, newTask.notes, newTask.duedate, newTask.status
 })
 })
 
+router.delete('/delete/:id', (request, response) =>{
+const id = request.params.id;
+const sqlText = `DELETE FROM tasks WHERE id=$1`;
+pool.query(sqlText, [id])
+  .then((result)=> {
+    console.log('Poof!', result);
+    response.sendStatus(200);
+  })
+  .catch((error)=> {
+    console.log('Task not deleted');
+    response.sendStatus(500);
+  })
+})
+
+router.put('/complete/:id',(request, response)=> {
+const id = request.params.id;
+const sqlText = `UPDATE tasks SET status='Complete' WHERE id=$1`;
+pool.query(sqlText, [id])
+  .then((result)=> {
+    console.log('FINISHED');
+    response.sendStatus(200);
+  })
+  .catch((error)=> {
+    console.log('Womp Womp, not Finished');
+    response.sendStatus(500);
+  })
+})
+
 module.exports = router;
