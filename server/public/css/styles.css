@@ -3,3 +3,19 @@
   border-color: DarkSeaGreen;
   border-width: 2px;
 }
+
+.title {
+  padding-top: 50px;
+  border-bottom: 2px;
+  border-color: black;
+}
+.addTask {
+  padding: 15px
+}
+
+.transferButton {
+  margin-left: 10px;
+}
+.deleteButton{
+  background-color: red;
+}

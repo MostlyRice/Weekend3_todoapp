@@ -28,7 +28,7 @@ function getTaskMaster(){
   })
   .done (function( response ){
     console.log( 'got some tasks: ', response );
-    showTasks(response);
+    viewTasks(response);
   })// end done
   .fail (function( data ){
     console.log( 'WOMP, cant gettem');
@@ -42,17 +42,18 @@ function saveTask( newTask ){
     url: '/tasks/add',
     data: newTask,
   })
-    .done (function( response ){
-      console.log( 'posted newTask: ', response );
-      getKoalas();
-    })// end done
-    .fail (function(){
-      console.log( 'WOMP, cant postem');
-    }) //end fail
+  .done (function( response ){
+    console.log( 'posted newTask: ', response );
+    getKoalas();
+  })// end done
+  .fail (function(){
+    console.log( 'WOMP, cant postem');
+  }) //end fail
 }//end saveTask
 function viewTasks(tasks){
   $('#listTasks').empty();
-  for(let tasks of tasks){
-    $('#listTasks').append(`<div> ${task.task}, ${task.notes}, ${task.duedate}, ${task.status}</div> `)
+  for(let task of tasks){
+    $('#listTasks').append(`<tr><td> ${task.task}</td><td> ${task.notes}</td>
+      <td> ${task.duedate.substring(0, 10)}</td><td> ${task.status} </td>`)
+    }
   }
-}

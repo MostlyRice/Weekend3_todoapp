@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 const port = 5000;
 // send taskmaster
 const taskRouter = require('./routes/router');
-app.use('/task',taskRouter);
+app.use('/tasks',taskRouter);
 // Start our server.
 app.listen(port, function() {
     console.log(`Server listening on port ${port}`);

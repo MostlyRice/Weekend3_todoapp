@@ -13,11 +13,12 @@ router.get('/', function(request, response){
     response.send(result.rows);
   })
   // bad things could happen...
-  .catch(function(error){
+  .catch(function(response){
     console.log('Error on Get:', error);
     response.sendStatus(500);
   })
-});
+})
+
 router.post('/add', (request, response) =>{
 const newTask = request.body;
 console.log('added new task', newTask);
