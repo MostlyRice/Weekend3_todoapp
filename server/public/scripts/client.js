@@ -4,9 +4,10 @@ $( document ).ready( function(){
   console.log( 'JQ' );
   // load existing getTaskMaster on page load
   getTaskMaster();
-
+  emptyInputs();
   // add task button click
   $( '#addButton' ).on( 'click', function(){
+    event.preventDefault();
     console.log( 'in addButton on click' );
     // get user input and put in an object
     // using a test object
@@ -19,16 +20,16 @@ $( document ).ready( function(){
     // call saveTask with the new obejct
     saveTask( newTask );
   });//end addButton on click
-    $('#listTasks').on('click', '.deleteButton', function(){
-      console.log('delete button task');
-      let deletetask = $(this).data('id');
-      endTasks(deletetask);
-    });//end deleteButton litener
-    $('#listTasks').on('click', '.completeButton', function(){
-      console.log('FINISH HIM');
-      let finishedTask = $(this).data('id');
-      completeTasks(finishedTask);
-    });//endTasks
+  $('#listTasks').on('click', '.deleteButton', function(){
+    console.log('delete button task');
+    let deletetask = $(this).data('id');
+    endTasks(deletetask);
+  });//end deleteButton litener
+  $('#listTasks').on('click', '.completeButton', function(){
+    console.log('FINISH HIM');
+    let finishedTask = $(this).data('id');
+    completeTasks(finishedTask);
+  });//endTasks
 }); // end doc ready
 
 function getTaskMaster(){
@@ -41,6 +42,7 @@ function getTaskMaster(){
   .done (function( response ){
     console.log( 'got some tasks: ', response );
     viewTasks(response);
+    emptyInputs();
   })// end done
   .fail (function( data ){
     console.log( 'WOMP, cant gettem');
@@ -69,11 +71,11 @@ function viewTasks(tasks){
     $('#listTasks').append(`<tr><td> ${task.task}</td><td> ${task.notes}</td>
       <td> ${task.duedate.substring(0, 10)}</td><td> ${task.status}</td>
       <td><button class="completeButton" data-id=${task.id}>COMPLETED</button></td>
-      <td><button class="deleteButton" data-id=${task.id}>Delete</button> </td>`)
+      <td><button class="deleteButton" data-id=${task.id}>Delete</button> </td></tr>`)
       else {
-        $('#listTasks').append(`<tr><td> ${task.task}</td><td> ${task.notes}</td>
-          <td> ${task.duedate.substring(0, 10)}</td><td> ${task.status} </td>
-          <td><button class="deleteButton" data-id=${task.id}>Delete</button> </td>`)
+        $('#listTasks').append(`<tr class="taskComplete"><td> ${task.task}</td><td> ${task.notes}</td>
+          <td class="taskComplete"> ${task.duedate.substring(0, 10)}</td> <td> ${task.status} </td>
+          <td><button class="deleteButton" data-id=${task.id}>Delete</button> </td></tr>`)
         }
       }
     }
@@ -104,3 +106,9 @@ function viewTasks(tasks){
         console.log( 'Uncomplete');
       });
     };
+    function emptyInputs(){
+        $('.task').val(''),
+        $('.notes').val('')
+        $('.duedate').val(''),
+        $('.status').val('')
+    }
