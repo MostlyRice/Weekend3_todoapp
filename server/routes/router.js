@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 console.log('in router');
 
 router.get('/', function(request, response){
-  const sqlText = 'SELECT * FROM tasks';
+  const sqlText = 'SELECT * FROM tasks ORDER BY status LIMIT 50';
   pool.query(sqlText)
   // query was successful
   .then(function(result) {
