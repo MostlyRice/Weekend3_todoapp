@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 // Can use any number from 1000 - 99999
 // but don't choose 5432 which is the default for the database.
-const port = 5000;
+const port = process.env.PORT || 5000;
 // send taskmaster
 const taskRouter = require('./routes/router');
 app.use('/tasks',taskRouter);
